@@ -137,7 +137,7 @@ trait ManyToManyPreload
 
                 if (! empty($orders)) {
                     foreach ($orders as $order) {
-                        if ($order['type'] === 'Raw')  {
+                        if (! empty($order['type']) && $order['type'] === 'Raw')  {
                             $unionQuery1->orderByRaw($order['sql'], $order['bindings'] ?? []);
                         } else {
                             $unionQuery1->orderBy($order['column'], $order['direction']);
@@ -169,7 +169,7 @@ trait ManyToManyPreload
 
                 if (! empty($orders)) {
                     foreach ($orders as $order) {
-                        if ($order['type'] === 'Raw')  {
+                        if (! empty($order['type']) && $order['type'] === 'Raw')  {
                             $unionQuery2->orderByRaw($order['sql'], $order['bindings'] ?? []);
                         } else {
                             $unionQuery2->orderBy($order['column'], $order['direction']);
